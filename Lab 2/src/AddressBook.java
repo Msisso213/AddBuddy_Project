@@ -36,4 +36,3 @@ public class AddressBook {
         addressBook.addBuddyInfo(buddy);
     }
 }
-
