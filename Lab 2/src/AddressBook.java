@@ -3,27 +3,29 @@ import java.util.List;
 
 public class AddressBook {
 
-    private List<BuddyInfo> buddyInfos;
+    private ArrayList<BuddyInfo> myBuddies;
 
     public AddressBook() {
-        this.buddyInfos = new ArrayList<BuddyInfo>();
+        myBuddies = new ArrayList<>();
     }
 
-    public void addBuddyInfo(BuddyInfo buddyInfo) {
-        buddyInfos.add(buddyInfo);
+    public void addBuddyInfo(BuddyInfo aBuddy) {
+        if(aBuddy != null){
+            myBuddies.add(aBuddy);
+        }
     }
 
-    public void removeBuddyInfo(BuddyInfo buddyInfo) {
-        buddyInfos.remove(buddyInfo);
+    public BuddyInfo removeBuddy(int index) {
+        if(index >= 0 && index < myBuddies.size()) {
+            return myBuddies.remove(index);
+        }
+            return null;
     }
     public static void main(String[] args) {
+        BuddyInfo buddy = new BuddyInfo("Homer", "123 street", "0123456789");
         AddressBook addressBook = new AddressBook();
-        addressBook.addBuddyInfo(new BuddyInfo("Homer", "123 street", "0123456789"));
-        addressBook.addBuddyInfo(new BuddyInfo("UUU", "123 street", "0123456789"));
-        System.out.println(addressBook.buddyInfos.size());
-        addressBook.removeBuddyInfo(addressBook.buddyInfos.get(0));
-        System.out.println(addressBook.buddyInfos.size());
-        System.out.println("Address book");
-        addressBook.removeBuddyInfo(addressBook.buddyInfos.get(0));
+        addressBook.addBuddyInfo(buddy);
+        addressBook.removeBuddy(0);
+        addressBook.addBuddyInfo(buddy);
     }
 }
